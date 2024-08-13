@@ -1,0 +1,35 @@
+{
+    "title": "测试项目",
+    "dict": "raw",
+    "project": {
+        "height": 640,
+        "width": 400
+    },
+    "bgm": "allbgm.mp3",
+    "voice": "cn-sx.wav",
+    "images": [
+        "0.jpg",
+        "1.jpg",
+        "2.jpg",
+        "3.jpg",
+        "4.jpg"
+    ],
+    "textArr": [
+        {
+            "bgc": "#5CA279",
+            "bgi": "20240519091110.jpg",
+            "color": "#5E1818",
+            "fontSize": 40,
+            "marginBottom": 300,
+            "text": "测试音效"
+        },
+        {
+            "bgc": "#821C1C",
+            "bgi": "2.jpg",
+            "color": "#fff",
+            "fontSize": 38,
+            "marginBottom": 100,
+            "text": "测试音效dddd"
+        }
+    ]
+}
