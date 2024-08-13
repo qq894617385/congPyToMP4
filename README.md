@@ -76,6 +76,8 @@ pip install Flask TTS flask_cors pymediainfo opencv-python moviepy numpy flask-s
 ### web服务
 默认127.0.0.1:5000 直接访问到前端界面
 
+```tree
+
 web
  ┣ 📂css
  ┃ ┣ 📜app.803ed75d.css
@@ -96,6 +98,9 @@ web
  ┃ ┗ 📜chunk-vendors.ad037dda.js.map
  ┣ 📜favicon.ico
  ┗ 📜index.html
+
+````
+
 
  源码放在另一个项目
 
