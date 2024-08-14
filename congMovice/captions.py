@@ -1,11 +1,14 @@
 from moviepy.editor import *
-from congMovice.utils import wrap_text
+# from congMovice.utils import wrap_text
 import os
 import json
+import cv2
+# import numpy as np
 
 
 def create_video_from_json(workSpacePath, allCreate=True):
     root_path = os.environ['root']
+    font_path = os.path.join(root_path, 'ttf', 'SimHei.ttf')
     current_directory = os.path.join(root_path, 'dataSpace', workSpacePath)
     jsonPath = os.path.join(current_directory, 'index.json')
 
@@ -26,8 +29,8 @@ def create_video_from_json(workSpacePath, allCreate=True):
         os.remove(os.path.join(video_directory, file))
 
     temp_files = []
-    width = json_data['project']['width'] or 640
-    height = json_data['project']['height'] or 640
+    width = json_data['project'].get('width', 640)
+    height = json_data['project'].get('height', 640)
 
     # 背景音乐和图片目录
     mp3_directory = os.path.join(current_directory, "sounds")
@@ -42,11 +45,11 @@ def create_video_from_json(workSpacePath, allCreate=True):
         audio_duration = audio_clip.duration  # 获取音频持续时间
         print(f"{audio_duration} 多少秒")
 
-        # 加载背景图片并设置持续时间为音频持续时间
-        bg_image_clip = ImageClip(bg_image_path).set_duration(audio_duration)
+        # 使用 OpenCV 加载背景图片
+        bg_image = cv2.imread(bg_image_path)
 
         # 获取图像尺寸并根据宽高比调整大小
-        img_width, img_height = bg_image_clip.size
+        img_height, img_width, _ = bg_image.shape
         if img_width > img_height:
             scale_factor = width / float(img_width)
         else:
@@ -54,7 +57,14 @@ def create_video_from_json(workSpacePath, allCreate=True):
         new_size = (int(img_width * scale_factor), int(img_height * scale_factor))
 
         # 调整图片大小并保持比例
-        bg_image_clip = bg_image_clip.resize(new_size)
+        resized_image = cv2.resize(bg_image, new_size, interpolation=cv2.INTER_LINEAR)
+
+        # 保存调整后的图像到临时文件
+        temp_resized_image_path = os.path.join(current_directory, "images", f"resized_{idx}.jpg")
+        cv2.imwrite(temp_resized_image_path, resized_image)
+
+        # 使用 MoviePy 加载调整后的图片
+        bg_image_clip = ImageClip(temp_resized_image_path).set_duration(audio_duration)
 
         # 创建一个 640x640 的黑色背景
         bg_color_clip = ColorClip(size=(width, height), color=(0, 0, 0), duration=audio_duration)
@@ -62,16 +72,16 @@ def create_video_from_json(workSpacePath, allCreate=True):
         # 将调整后的图片居中放置在黑色背景上
         combined_clip = CompositeVideoClip([bg_color_clip, bg_image_clip.set_position("center")], size=(width, height))
 
-        bgc = item['bgc'] or 'black'
-        fontSize = item['fontSize'] or 24
-        color = item['color'] or 'white'
+        bgc = item.get('bgc', 'black')
+        fontSize = item.get('fontSize', 24)
+        color = item.get('color', 'white')
 
         # 创建文字剪辑，并设置持续时间为音频持续时间
-        txt_clip = TextClip(text, fontsize=fontSize, color=color, bg_color=bgc, font='SimHei').set_position(
+        txt_clip = TextClip(text, fontsize=fontSize, color=color, bg_color=bgc, font=font_path).set_position(
             'center').set_duration(audio_duration)
 
         # 文字剪辑的位置，距离底部 text_bottom_margin 像素
-        text_bottom_margin = item['marginBottom'] or 60  # 可以根据需要调整这个值
+        text_bottom_margin = item.get('marginBottom', 60)  # 可以根据需要调整这个值
         text_position = ('center', height - text_bottom_margin)
 
         # 将文字剪辑合成到背景图片上
@@ -86,6 +96,7 @@ def create_video_from_json(workSpacePath, allCreate=True):
         # 关闭剪辑以释放资源
         combined_clip.close()
         audio_clip.close()
+
     # 全部生成
     if allCreate:
         # 读取所有临时文件并合成最终视频

@@ -12,9 +12,12 @@ def init_translate_zh_to_en():
 
     # 指定模型和tokenizer下载保存的目录
     cache_dir = os.path.join(root_path, "lang_model")
+
+    # 指定模型和tokenizer下载保存的目录
+    # cache_dir = os.path.join(root_path, "zh_en_translate", "local_model")
     # 加载 tokenizer 和模型
-    tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-zh-en", cache_dir=cache_dir)
-    model = AutoModelForSeq2SeqLM.from_pretrained("Helsinki-NLP/opus-mt-zh-en", cache_dir=cache_dir)
+    tokenizer = AutoTokenizer.from_pretrained("Helsinki-NLP/opus-mt-zh-en", cache_dir=cache_dir, local_files_only=True)
+    model = AutoModelForSeq2SeqLM.from_pretrained("Helsinki-NLP/opus-mt-zh-en", cache_dir=cache_dir, local_files_only=True)
 
 
 def translate_zh_to_en(text):

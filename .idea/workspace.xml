@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a819fae-4855-4f1e-b9c8-3b3917661a00" name="更改" comment="" />
+    <list default="true" id="3a819fae-4855-4f1e-b9c8-3b3917661a00" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/congMovice/captions.py" beforeDir="false" afterPath="$PROJECT_DIR$/congMovice/captions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/dataSpace/raw/index.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/dataSpace/raw/index.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/dataSpace/raw/output/final_output.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/static/dataSpace/raw/output/final_output.mp4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/dataSpace/raw/sounds/0.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/static/dataSpace/raw/sounds/0.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/dataSpace/raw/sounds/1.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/static/dataSpace/raw/sounds/1.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/dataSpace/raw/video/0.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/static/dataSpace/raw/video/0.mp4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/dataSpace/raw/video/1.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/static/dataSpace/raw/video/1.mp4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zh_en_translate/zh_to_en.py" beforeDir="false" afterPath="$PROJECT_DIR$/zh_en_translate/zh_to_en.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

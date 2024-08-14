@@ -156,11 +156,12 @@ CMD ["python", "app.py"]
 Docker 版本 27.0.1 已经测试完成。  
 *Docker version 27.0.1 has been tested successfully.*
 
-已经复刻镜像 (20G)，开箱即用。  
-*The image (20G) has been replicated and is ready to use.*
+已经复刻镜像 (16G)，开箱即用。  
+*The image (16G) has been replicated and is ready to use.*
 
-> *Baidu Cloud Link: https://pan.baidu.com/s/1Vkxkd7ClruBtkaIw-fWpEg?pwd=zj2l  
-Password: zj2l*  
+--来自百度网盘超级会员v3的分享
+> *Baidu Cloud Link: https://pan.baidu.com/s/18McT8xkL2wzo5GAwxDu0lg?pwd=g3ab  
+Password: g3ab*  
 
 ```
 
